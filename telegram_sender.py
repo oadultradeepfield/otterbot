@@ -29,8 +29,15 @@ def send_telegram_messages(chat_id: str, message: str) -> bool:
 
 def format_daily_tasks(tasks: List[Dict]) -> str:
     """Format daily tasks into friendly OtterBot message."""
+    google_sheet_link = os.getenv("GOOGLE_SHEETS_SHEET_LINK")
+    if not google_sheet_link:
+        raise EnvironmentError("GOOGLE_SHEETS_SHEET_LINK is not set")
+
     if not tasks:
-        return "🦦 *Good morning!* No tasks scheduled for today. Time to relax! 🌊"
+        return (
+            f"🦦 *Good morning!* No tasks scheduled for today. Time to relax! 🌊\n\n"
+            f"📄 [View your Google Sheet here]({google_sheet_link})"
+        )
 
     total_hours = sum(task.get("estimated_hours", 0) for task in tasks)
     message = f"🦦 *Good morning! Here are your tasks for today:*\n\n"
@@ -42,4 +49,6 @@ def format_daily_tasks(tasks: List[Dict]) -> str:
 
     message += f"\n⏱ Total estimated time: *{total_hours} hours*"
     message += f"\n🌊 You've got this! Stay focused like an otter hunting fish! 🐟"
+    message += f"\n📄 [View your Google Sheet here]({google_sheet_link})"
+
     return message
