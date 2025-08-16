@@ -5,6 +5,11 @@ from typing import Dict, List
 import gspread
 from google.oauth2.service_account import Credentials
 
+SCOPES = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive",
+]
+
 
 class GoogleSheetsManager:
     def __init__(self):
@@ -18,7 +23,9 @@ class GoogleSheetsManager:
             raise EnvironmentError("GOOGLE_SHEETS_SHEET_ID is not set")
 
         creds_dict = json.loads(creds_json)
-        self.credentials = Credentials.from_service_account_info(creds_dict)
+        self.credentials = Credentials.from_service_account_info(
+            creds_dict, scopes=SCOPES
+        )
         self.client = gspread.authorize(self.credentials)
         self.sheet_id = sheet_id
 

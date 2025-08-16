@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-from data_manager import GoogleSheetsManager
+from google_sheets_manager import GoogleSheetsManager
 from telegram_sender import format_daily_tasks, send_telegram_messages
 
 
