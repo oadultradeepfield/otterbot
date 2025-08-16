@@ -16,6 +16,7 @@ def send_telegram_messages(chat_id: str, message: str) -> bool:
         "chat_id": chat_id,
         "text": message,
         "parse_mode": "Markdown",
+        "disable_notification": False,
     }
 
     try:
