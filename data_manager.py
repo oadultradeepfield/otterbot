@@ -51,6 +51,7 @@ class GoogleSheetsManager:
 def parse_hours(hours_value) -> float:
     """Parse hours value from sheet (handles both string and numeric)"""
     try:
-        return float(hours_value) if hours_value else 0
+        hours = float(hours_value) if hours_value else 0
+        return max(0, hours)
     except (ValueError, TypeError):
         return 0
