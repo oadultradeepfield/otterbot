@@ -33,7 +33,7 @@ plug-and-play. You can configure it using the steps below and start using it wit
 1. Create a Google Sheet with the following three columns:
 
    | name   | date       | estimated_hours |
-                  |--------|------------|-----------------|
+      |--------|------------|-----------------|
    | Task 1 | 2025-07-16 | 2.5             |
 
    **Note:** The `date` must be in `YYYY-MM-DD` format. The `estimated_hours` should be a number (can include decimals)
