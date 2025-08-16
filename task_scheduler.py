@@ -1,6 +1,8 @@
 import os
 from datetime import datetime
 
+from dotenv import load_dotenv
+
 from google_sheets_manager import GoogleSheetsManager
 from telegram_sender import format_daily_tasks, send_telegram_messages
 
@@ -39,4 +41,5 @@ def run_daily_reminder():
 
 
 if __name__ == "__main__":
+    load_dotenv()
     run_daily_reminder()
