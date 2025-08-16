@@ -1,8 +1,8 @@
 import os
 from datetime import datetime
 
-from bot.data_manager import GoogleSheetsManager
-from bot.telegram_sender import format_daily_tasks, send_telegram_messages
+from data_manager import GoogleSheetsManager
+from telegram_sender import format_daily_tasks, send_telegram_messages
 
 
 def run_daily_reminder():
