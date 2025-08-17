@@ -2,7 +2,7 @@ name: Daily Task Reminder
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 8 AM Singapore Time (UTC+8)
+    - cron: '0 1 * * *'  # 8 AM Singapore Time (UTC+8)
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
