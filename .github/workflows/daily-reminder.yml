@@ -1,9 +1,9 @@
 name: Daily Task Reminder
 
 on:
-  schedule:
-    - cron: '0 1 * * *'  # 8 AM Singapore Time (UTC+8)
-  workflow_dispatch:  # Allow manual trigger
+  # schedule:
+  #   - cron: "0 0 * * *" # 8 AM Singapore Time (UTC+8)
+  workflow_dispatch: # Allow manual trigger
 
 jobs:
   send_reminder:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: "3.9"
 
       - name: Install dependencies
         run: |
@@ -31,3 +31,4 @@ jobs:
           GOOGLE_SHEETS_SHEET_LINK: ${{ secrets.GOOGLE_SHEETS_SHEET_LINK }}
         run: |
           python task_scheduler.py
+
