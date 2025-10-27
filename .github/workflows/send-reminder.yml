@@ -1,8 +1,8 @@
-name: Daily Task Reminder
+name: Send Task Reminder
 
 on:
-  # schedule:
-  #   - cron: "0 0 * * *" # 8 AM Singapore Time (UTC+8)
+  schedule:
+    - cron: "*/30 * * * *"
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -30,5 +30,5 @@ jobs:
           GOOGLE_SHEETS_SHEET_ID: ${{ secrets.GOOGLE_SHEETS_SHEET_ID }}
           GOOGLE_SHEETS_SHEET_LINK: ${{ secrets.GOOGLE_SHEETS_SHEET_LINK }}
         run: |
-          python task_scheduler.py
+          python src/task_scheduler.py
 

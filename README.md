@@ -1,8 +1,8 @@
 # Otterbot
 
-Otterbot is a **Python Telegram bot template** that sends daily task reminders from Google Sheets using the Google
-Sheets
-API. The bot runs on a schedule through **GitHub Actions.**
+Otterbot is a **Python Telegram bot template** that sends half-hourly reminders for daily tasks from Google Sheets using
+the Google Sheets API, but only sends a reminder when the task list differs from the previous send (e.g., some tasks are
+removed or their details are changed). The bot runs on a schedule through **GitHub Actions.**
 
 The main benefit of this approach is that it's completely serverless with zero hosting costs. The downside is that you
 cannot interact with the bot in real-time. If you only need basic functionality, this repository is essentially
@@ -33,7 +33,7 @@ plug-and-play. You can configure it using the steps below and start using it wit
 1. Create a Google Sheet with the following three columns:
 
    | name   | date       | estimated_hours |
-   | ------ | ---------- | --------------- |
+                                        |--------|------------|-----------------|
    | Task 1 | 2025-07-16 | 2.5             |
 
    **Note:** The `date` must be in `YYYY-MM-DD` format. The `estimated_hours` should be a number (can include decimals)
@@ -52,14 +52,19 @@ plug-and-play. You can configure it using the steps below and start using it wit
 Once you've completed these steps, you can start using your forked version of OtterBot with your own customizations. You
 can modify the bot's personality by editing the text strings in the Python files.
 
-**Note:** The GitHub Actions workflow in this repository has the **schedule trigger commented out by default**. To enable daily reminders, you must manually uncomment the schedule section in `.github/workflows/daily-reminder.yml`.
-
 ## Local Development
 
 ### Prerequisites
 
 1. Ensure you have Python 3.9+ installed
-2. Install the required packages:
+2. Create and activate a virtual environment:
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate # On Windows use `venv\Scripts\activate`
+   ```
+
+3. Install the required packages:
 
    ```bash
    pip install -r requirements.txt
@@ -71,12 +76,11 @@ can modify the bot's personality by editing the text strings in the Python files
 2. Run the task scheduler to test the daily reminder functionality:
 
    ```bash
-   python task_scheduler.py
+   python src/task_scheduler.py
    ```
 
 3. If you make changes to the GitHub Actions workflow, you can use the **manual trigger dispatch action** to test
-   without
-   waiting for the scheduled run.
+   without waiting for the scheduled run.
 
 ## License
 
