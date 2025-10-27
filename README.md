@@ -33,7 +33,7 @@ plug-and-play. You can configure it using the steps below and start using it wit
 1. Create a Google Sheet with the following three columns:
 
    | name   | date       | estimated_hours |
-                                        |--------|------------|-----------------|
+   | ------ | ---------- | --------------- |
    | Task 1 | 2025-07-16 | 2.5             |
 
    **Note:** The `date` must be in `YYYY-MM-DD` format. The `estimated_hours` should be a number (can include decimals)
@@ -50,7 +50,8 @@ plug-and-play. You can configure it using the steps below and start using it wit
    reminder messages for easy access to your sheet.
 
 Once you've completed these steps, you can start using your forked version of OtterBot with your own customizations. You
-can modify the bot's personality by editing the text strings in the Python files.
+can modify the bot's personality by editing the text strings in the Python files. Note that your may want to delete
+`.last_message_hash` file in the repository to reset the bot's memory of the last sent message.
 
 ## Local Development
 
@@ -85,4 +86,3 @@ can modify the bot's personality by editing the text strings in the Python files
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](/LICENSE) for more details.
-
