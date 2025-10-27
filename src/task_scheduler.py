@@ -5,8 +5,8 @@ from hashlib import md5
 
 from dotenv import load_dotenv
 
-from src.google_sheets_manager import GoogleSheetsManager
-from src.telegram_sender import format_daily_tasks, send_telegram_messages
+from google_sheets_manager import GoogleSheetsManager
+from telegram_sender import format_daily_tasks, send_telegram_messages
 
 LAST_MESSAGE_HASH_FILE = ".last_message_hash"
 
