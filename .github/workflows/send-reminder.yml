@@ -3,7 +3,10 @@ name: Send Task Reminder
 on:
   schedule:
     - cron: "*/30 * * * *"
-  workflow_dispatch: # Allow manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   send_reminder:
