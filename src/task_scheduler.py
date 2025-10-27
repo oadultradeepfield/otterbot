@@ -3,13 +3,13 @@ from datetime import datetime
 
 from dotenv import load_dotenv
 
-from google_sheets_manager import GoogleSheetsManager
-from telegram_sender import format_daily_tasks, send_telegram_messages
+from src.google_sheets_manager import GoogleSheetsManager
+from src.telegram_sender import format_daily_tasks, send_telegram_messages
 
 
-def run_daily_reminder():
-    """Main function for running daily reminder"""
-    print("🦦 OtterBot starting daily reminder...")
+def run_reminder():
+    """Main function for running task reminder"""
+    print("🦦 OtterBot starting sending reminder...")
 
     # Get today's date
     today = datetime.now().strftime("%Y-%m-%d")
@@ -19,12 +19,8 @@ def run_daily_reminder():
     try:
         data_manager = GoogleSheetsManager()
         tasks = data_manager.get_tasks_for_date(today)
-        print(f"Found {len(tasks)} tasks for today")
-
-        # Format message
         message = format_daily_tasks(tasks)
 
-        # Send to user
         chat_id = os.getenv("TELEGRAM_CHAT_ID")
         if not chat_id:
             print("Error: TELEGRAM_CHAT_ID not set")
@@ -42,4 +38,4 @@ def run_daily_reminder():
 
 if __name__ == "__main__":
     load_dotenv()
-    run_daily_reminder()
+    run_reminder()
